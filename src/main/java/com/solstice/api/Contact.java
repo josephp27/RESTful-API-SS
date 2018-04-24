@@ -1,26 +1,28 @@
 package com.solstice.api;
 
-public class Student {
+public class Contact {
     private Long id;
     private String name;
     private String email;
     private String number_work;
     private String number_personal;
+    private String company;
 
-    public Student() {
+    public Contact() {
         super();
     }
 
-    public Student(Long id, String name, String email, String number_work, String number_personal) {
+    public Contact(Long id, String name, String email, String number_work, String number_personal, String company) {
         super();
         this.id = id;
         this.name = name;
         this.email = email;
-        this.number_work = formatNumber(number_work);
-        this.number_personal = formatNumber(number_personal);
+        this.number_work = Validatior.formatNumber(number_work);
+        this.number_personal = Validatior.formatNumber(number_personal);
+        this.company = company;
     }
 
-    public Student(String name, String email) {
+    public Contact(String name, String email) {
         super();
         this.name = name;
         this.email = email;
@@ -59,20 +61,24 @@ public class Student {
     }
 
     public void setWorkPhone(String number_work){
-        this.number_work = formatNumber(number_work);
+        this.number_work = Validatior.formatNumber(number_work);
     }
 
     public void setPersonalPhone(String number_personal){
-        this.number_personal = formatNumber(number_personal);
+        this.number_personal = Validatior.formatNumber(number_personal);
     }
 
-    protected static String formatNumber(String number){
-        return number.replaceAll("[-()+]", "").trim();
+    public void setCompany(String company){
+        this.company = company;
+    }
+
+    public String getCompany(){
+        return company;
     }
 
     @Override
     public String toString() {
-        return String.format("Student [id=%s, name=%s, email=%s, work=%s, personal=%s]", id, name, email,
+        return String.format("Contact [id=%s, name=%s, email=%s, work=%s, personal=%s]", id, name, email,
                 number_work, number_personal);
     }
 
