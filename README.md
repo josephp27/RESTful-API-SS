@@ -1,1 +1,1 @@
-A restful api for a coding challenge
+A RESTful API written in Spring Boot for a coding challenge
