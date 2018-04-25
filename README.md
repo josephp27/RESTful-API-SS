@@ -52,3 +52,15 @@ The database is a simple SQL database that is not persistant for ease of Solstic
    Arguments: email, work, personal, company, street, state, city, image, bd
    
    localhost:8080/update?name=Johnny%20Depp&email=myemail@live.com&work=+1(123)555-4567&personal=6306666666&company=Jewel
+
+
+---
+## TODO
+
+Abstract away more things with the validator
+
+Do more checking for valid entries
+
+Make a cooler looking error page for browsers
+
+Allow for updating only some values and retaining old if value is empty within update method
