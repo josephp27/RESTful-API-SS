@@ -32,7 +32,7 @@ public class UserController {
                 street, state, city, image, bd);
 
         repository.insert(newContact);
-        return "saved\n";
+        return "Contact Added!\n";
     }
 
     @GetMapping("/update")
@@ -87,7 +87,7 @@ public class UserController {
         if(c != null)
             return c;
         else{
-            throw new IllegalArgumentException("That numberl is not registered to anyone!");
+            throw new IllegalArgumentException("That number is not registered to anyone!");
         }
 
     }
