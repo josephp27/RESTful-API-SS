@@ -26,8 +26,7 @@ Within the directory run:
 Or to directly run:
    ./gradlew bootRun
 ```
----
-
+## Notes and Assumptions
 * The email is the main unique identifier for this API as many people can have the same name, etc, but not the same email. 
 
 
@@ -35,29 +34,32 @@ Or to directly run:
 
 * When running the below tests I recommend using curl as navigating with the browser on errors looks slightly different than a terminal request as Spring Boot adds in more info.
 
-*Assumes images are links
+* Assumes images are links
 
 * 9 Unit Tests [located in the tests folder](https://github.com/josephp27/RESTful-API-SS/blob/master/src/test/java/com/solstice/api/SolsticeApiApplicationTests.java). Feel free to use these to understand parameters to requests
+
+* Performs validations on various inputs like phone numbers using Regular Expressions
 
 ## Requests
 2. /get
 
-   http://localhost:8080/get
+   http://localhost:8080/get (returns all contacts)
 
-   http://localhost:8080/get?work_number=
+   http://localhost:8080/get?work_number= (returns contact assigned to work number)
 
-   http://localhost:8080/get?email=
-3. /getall
+   http://localhost:8080/get?email= (returns contact assigned to email)
+   
+3. /getall (retrieve all records from state or city. States are 2 char codes like IL or MO)
 
    http://localhost:8080/getall?state=IL
 
    http://localhost:8080/getall?city=chicago
 
-3. /delete
+3. /delete (It is based only on the email as I have set emails to be the unique identifier) 
 
-   http://localhost:8080/delete?email= (It is based only on the email as I have set emails to be the unique identifier) 
+   http://localhost:8080/delete?email= 
 
-4. /add
+4. /add (Add a user if the email does not already exist)
 
    Arguments: name (required), email (required), work (required), personal, company, street, state, city, image, bd
 
@@ -65,7 +67,7 @@ Or to directly run:
 
    Spacing can be emulated by + or %20
 
-5. /update
+5. /update (Update a user if they exist in database. Updates based on email address. If parameter not specified, sets to blank)
 
    Updating can only be done if a contact has been added and is based on email as it is the unique identifier
 
@@ -73,8 +75,6 @@ Or to directly run:
    
    http://localhost:8080/update?name=Johnny%20Depp&email=myemail@live.com&work=+1(123)555-4567&personal=6306666666&company=Jewel
 
-
----
 ## TODO
 
 * Abstract away more things with the validator
@@ -88,5 +88,3 @@ Or to directly run:
 * Add more unit tests
 
 * Provide better feedback on delete, add, update, etc in form of a JSON response
-
-
