@@ -1,5 +1,19 @@
 # A RESTful API written in JAVA using Spring Boot for Solstice
 
+## Scope
+```
+Develop a RESTful API that would allow a web or mobile front-end to:
+● Create a contact record
+● Retrieve a contact record
+● Update a contact record
+● Delete a contact record
+● Search for a record by email or phone number
+● Retrieve all records from the same state or city
+The contact record should represent the following information: name, company, profile image, email,
+birthdate, phone number (work, personal) and address.
+```
+---
+
 ## Compiling and Running
 ```
 Within the directory run:
@@ -57,12 +71,16 @@ The database is a simple SQL database that is not persistant for ease of Solstic
 ---
 ## TODO
 
-Abstract away more things with the validator
+* Abstract away more things with the validator
 
-Do more checking for valid entries
+* Do more checking for valid entries
 
-Make a cooler looking error page for browsers
+* Make a cooler looking error page for browsers
 
-Allow for updating only some values and retaining old if value is empty within update method
+* Allow for updating only some values and retaining old if value is empty within update method
 
-Add more unit tests
+* Add more unit tests
+
+* Provide better feedback on delete, add, update, etc in form of a JSON response
+
+
