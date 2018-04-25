@@ -1,8 +1,8 @@
 insert into contact
-values(10001,'Ranga', 'E1234567', '11', '21', 'jewel', '48 S 3rd', 'IL', 'CHICAGO' , 'https://www.facebook.com', '11/27/1992');
+values(10001,'Ranga', 'ranga@gmail.com', '11', '21', 'Walmart', '55 W 6th', 'IL', 'CHICAGO' , 'https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg', '11/27/1994');
 
 insert into contact
-values(10002,'JP', 'E123456f7', '12', '22', 'jewel', '48 S 3rd', 'IL', 'CHICAGO' , 'https://www.facebook.com', '11/27/1992');
+values(10002,'JP', 'jp@gmail.com', '12', '22', 'Jewel', '48 S 8th', 'IL', 'CHICAGO' , 'https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg', '11/27/1995');
 
 insert into contact
-values(10003,'TJ', 'E1234e567', '13', '23', 'jewel', '48 S 3rd', 'IL', 'LOMBARD' , 'https://www.facebook.com', '11/27/1992');
+values(10003,'TJ', 'tj@gmail.com', '13', '23', 'CVS', '48 N Pineapple', 'IL', 'LOMBARD' , 'https://image.freepik.com/free-icon/facebook-logo_318-49940.jpg', '11/27/1997');

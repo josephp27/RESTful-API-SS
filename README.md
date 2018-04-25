@@ -15,6 +15,10 @@ Or to directly run:
 
 The email is the main unique identifier for this API as many people can have the same name, etc, but not the same email. 
 
+
+The database is a simple SQL database that is not persistant for ease of Solstice testing. Inside data.sql are some preloaded contacts however
+
+
 1. 9 Unit Tests
 2. /get
 

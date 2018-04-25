@@ -15,7 +15,7 @@ public class ContactJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    class StudentRowMapper implements RowMapper<Contact> {
+    class ContactRowMapper implements RowMapper<Contact> {
         @Override
         public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {
             Contact contact = new Contact();
@@ -37,15 +37,15 @@ public class ContactJdbcRepository {
     }
 
     public List<Contact> findAll() {
-        return jdbcTemplate.query("select * from contact", new StudentRowMapper());
+        return jdbcTemplate.query("select * from contact", new ContactRowMapper());
     }
 
     public List<Contact> findAllState(String state) {
-        return jdbcTemplate.query("select * from contact where state=?",new Object[] { state }, new StudentRowMapper());
+        return jdbcTemplate.query("select * from contact where state=?",new Object[] { state }, new ContactRowMapper());
     }
 
     public List<Contact> findAllCity(String city) {
-        return jdbcTemplate.query("select * from contact where city=?",new Object[] { city }, new StudentRowMapper());
+        return jdbcTemplate.query("select * from contact where city=?",new Object[] { city }, new ContactRowMapper());
     }
 
     public Contact findById(long id) {
@@ -56,7 +56,7 @@ public class ContactJdbcRepository {
     public Contact findByEmail(String email) {
         try {
             return jdbcTemplate.queryForObject("select * from contact where email=?", new Object[]{email},
-                    new StudentRowMapper());
+                    new ContactRowMapper());
         }catch (Exception e){
             return null;
         }
@@ -65,7 +65,7 @@ public class ContactJdbcRepository {
     public Contact findByWorkNumber(String number) {
         try {
             return jdbcTemplate.queryForObject("select * from contact where number_work=?", new Object[]{number},
-                    new StudentRowMapper());
+                    new ContactRowMapper());
         }catch(Exception e){
             return null;
         }
