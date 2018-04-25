@@ -22,12 +22,14 @@ public class UserController {
                          @RequestParam(name="work") String number_work,
                          @RequestParam(name="personal", required = false, defaultValue = "") String number_personal,
                          @RequestParam(name="company", required = false, defaultValue = "") String company,
-                         @RequestParam(name="address", required = false, defaultValue = "") String address,
+                         @RequestParam(name="street", required = false, defaultValue = "") String street,
+                         @RequestParam(name="state", required = false, defaultValue = "") String state,
+                         @RequestParam(name="city", required = false, defaultValue = "") String city,
                          @RequestParam(name="image", required = false, defaultValue = "") String image,
                          @RequestParam(name="bd", required = false, defaultValue = "") String bd) {
 
         Contact newContact = new Contact(counter.incrementAndGet(), user, email, number_work, number_personal, company,
-                address, image, bd);
+                street, state, city, image, bd);
 
         repository.insert(newContact);
         return "saved\n";

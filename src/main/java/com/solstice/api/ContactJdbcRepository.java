@@ -28,7 +28,9 @@ public class ContactJdbcRepository {
             contact.setCompany(rs.getString("company"));
             contact.setWorkPhone(rs.getString("number_work"));
             contact.setPersonalPhone(rs.getString("number_personal"));
-            contact.setAddress(rs.getString("address"));
+            contact.setStreet(rs.getString("street"));
+            contact.setState(rs.getString("state"));
+            contact.setCity(rs.getString("city"));
             contact.setProfileImage(rs.getString("image"));
             contact.setBd(rs.getString("bd"));
             return contact;
@@ -70,10 +72,11 @@ public class ContactJdbcRepository {
         if(c != null){
             throw new IllegalArgumentException("That email is already registered to a user!");
         }else{
-            return jdbcTemplate.update("insert into contact (id, name, email, number_work, number_personal, company, address, image, bd) " +
-                            "values(?,  ?, ?, ?, ?, ?, ?, ?, ?)",
+            return jdbcTemplate.update("insert into contact (id, name, email, number_work, number_personal, company, street, state, city, image, bd) " +
+                            "values(?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     new Object[] { contact.getId(), contact.getName(), contact.getEmail(),
-                            contact.getWorkPhone(), contact.getPersonalPhone(), contact.getCompany(), contact.getAddress(),
+                            contact.getWorkPhone(), contact.getPersonalPhone(), contact.getCompany(),
+                            contact.getStreet(), contact.getState(), contact.getCity(),
                             contact.getProfileImage(), contact.getBd()});
         }
     }

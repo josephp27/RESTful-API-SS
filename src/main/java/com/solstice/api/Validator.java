@@ -72,9 +72,20 @@ public class Validator {
     }
 
     protected static void validateAddress(Contact c){
-        c.setAddress(processSpaces(c.getAddress()));
-        if(c.getAddress().length() > 255) {
-            throw new IllegalArgumentException("The 'Address' must be less than 255 characters");
+        c.setStreet(processSpaces(c.getStreet()).toUpperCase());
+        c.setState(processSpaces(c.getState()).toUpperCase());
+        c.setCity(processSpaces(c.getCity()).toUpperCase());
+
+        if(c.getState().length() > 2) {
+            throw new IllegalArgumentException("The 'State' must be less than 2 characters");
+        }
+
+        if(c.getStreet().length() > 255) {
+            throw new IllegalArgumentException("The 'Street' must be less than 255 characters");
+        }
+
+        if(c.getCity().length() > 255) {
+            throw new IllegalArgumentException("The 'City' must be less than 255 characters");
         }
     }
 

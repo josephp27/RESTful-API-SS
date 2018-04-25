@@ -7,7 +7,9 @@ public class Contact {
     private String number_work;
     private String number_personal;
     private String company;
-    private String address;
+    private String street;
+    private String state;
+    private String city;
     private String profileImage;
     private String bd;
 
@@ -16,7 +18,7 @@ public class Contact {
     }
 
     public Contact(Long id, String name, String email, String number_work, String number_personal, String company,
-                   String address, String profileImage, String bd) {
+                   String street, String state, String city, String profileImage, String bd) {
         super();
         this.id = id;
         this.name = Validator.processSpaces(name);
@@ -24,7 +26,9 @@ public class Contact {
         this.number_work = Validator.formatNumber(number_work);
         this.number_personal = Validator.formatNumber(number_personal);
         this.company = company;
-        this.address = address;
+        this.street = street;
+        this.state = state;
+        this.city = city;
         this.profileImage = profileImage;
         this.bd = bd;
         Validator.validate(this);
@@ -84,12 +88,28 @@ public class Contact {
         return company;
     }
 
-    public void setAddress(String address){
-        this.address = address;
+    public void setStreet(String address){
+        this.street = address;
     }
 
-    public String getAddress(){
-        return address;
+    public String getStreet(){
+        return street;
+    }
+
+    public void setState(String state){
+        this.state = state;
+    }
+
+    public String getState(){
+        return state;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public String getCity(){
+        return city;
     }
 
     public void setProfileImage(String image){
