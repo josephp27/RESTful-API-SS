@@ -77,9 +77,9 @@ Or to directly run:
 
 ## TODO
 
-* Abstract away more things with the validator
+* Abstract away more things with the validator and cleanup. Make most methods private from protected
 
-* Do more checking for valid entries
+* Do better checking for valid entries
 
 * Make a cooler looking error page for browsers
 
