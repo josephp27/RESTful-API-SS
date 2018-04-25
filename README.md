@@ -3,16 +3,17 @@
 ## Scope
 ```
 Develop a RESTful API that would allow a web or mobile front-end to:
-● Create a contact record
-● Retrieve a contact record
-● Update a contact record
-● Delete a contact record
-● Search for a record by email or phone number
-● Retrieve all records from the same state or city
+
+* Create a contact record
+* Retrieve a contact record
+* Update a contact record
+* Delete a contact record
+* Search for a record by email or phone number
+* Retrieve all records from the same state or city
+
 The contact record should represent the following information: name, company, profile image, email,
 birthdate, phone number (work, personal) and address.
 ```
----
 
 ## Compiling and Running
 ```
@@ -27,13 +28,18 @@ Or to directly run:
 ```
 ---
 
-The email is the main unique identifier for this API as many people can have the same name, etc, but not the same email. 
+* The email is the main unique identifier for this API as many people can have the same name, etc, but not the same email. 
 
 
-The database is a simple SQL database that is not persistant for ease of Solstice testing. Inside data.sql are some preloaded contacts however
+* The database is a simple SQL database that is not persistant for ease of Solstice testing. Inside data.sql are some preloaded contacts however
 
+* When running the below tests I recommend using curl as navigating with the browser on errors looks slightly different than a terminal request as Spring Boot adds in more info.
 
-1. 9 Unit Tests
+*Assumes images are links
+
+* 9 Unit Tests [located in the tests folder](https://github.com/josephp27/RESTful-API-SS/blob/master/src/test/java/com/solstice/api/SolsticeApiApplicationTests.java). Feel free to use these to understand parameters to requests
+
+## Requests
 2. /get
 
    http://localhost:8080/get
@@ -55,7 +61,7 @@ The database is a simple SQL database that is not persistant for ease of Solstic
 
    Arguments: name (required), email (required), work (required), personal, company, street, state, city, image, bd
 
-   http://localhost:8080/add?name=Tom%20Cruise&email=myemail@live.com&work=+1(555)555-5555&personal=6305555555&company=walmart&bd=11/27/1992&street=99+S+6th&state=IL&city=Chicago'
+   http://localhost:8080/add?name=Tom%20Cruise&email=myemail@live.com&work=+1(555)555-5555&personal=6305555555&company=walmart&bd=11/27/1992&street=99+S+6th&state=IL&city=Chicago
 
    Spacing can be emulated by + or %20
 
