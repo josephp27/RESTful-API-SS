@@ -1,1 +1,3 @@
-A RESTful API written in Spring Boot for a coding challenge
+#H1 A RESTful API written in Spring Boot for Solstice
+
+
