@@ -1,7 +1,6 @@
 # A RESTful API written in JAVA using Spring Boot for Solstice
 
 ## Scope
-```
 Develop a RESTful API that would allow a web or mobile front-end to:
 
 * Create a contact record
@@ -13,7 +12,6 @@ Develop a RESTful API that would allow a web or mobile front-end to:
 
 The contact record should represent the following information: name, company, profile image, email,
 birthdate, phone number (work, personal) and address.
-```
 
 ## Compiling and Running
 ```
@@ -24,6 +22,7 @@ Within the directory run:
    
 
 Or to directly run:
+
    ./gradlew bootRun
 ```
 ## Notes and Assumptions
@@ -68,8 +67,6 @@ Or to directly run:
    Spacing can be emulated by + or %20
 
 5. /update (Update a user if they exist in database. Updates based on email address. If parameter not specified, sets to blank)
-
-   Updating can only be done if a contact has been added and is based on email as it is the unique identifier
 
    Arguments: name (required), email (required), work (required), personal, company, street, state, city, image, bd
    
