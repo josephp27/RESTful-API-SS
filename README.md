@@ -1,5 +1,17 @@
-# A RESTful API written in Spring Boot for Solstice
+# A RESTful API written in JAVA using Spring Boot for Solstice
 
+## Compiling and Running
+```
+Within the directory run:
+
+   ./gradlew build //Let this finish, will take awhile
+   java -jar build/libs/solstice-0.0.1-SNAPSHOT.jar
+   
+
+Or to directly run:
+   ./gradlew bootRun
+```
+---
 
 The email is the main unique identifier for this API as many people can have the same name, etc, but not the same email.
 
