@@ -35,13 +35,13 @@ The database is a simple SQL database that is not persistant for ease of Solstic
 
 3. /delete
 
-   localhost:8080/delete?email= (It is based only on the email as I have set emails to be the unique identifier) 
+   http://localhost:8080/delete?email= (It is based only on the email as I have set emails to be the unique identifier) 
 
 4. /add
 
-   Arguments: email, work, personal, company, street, state, city, image, bd
+   Arguments: name (required), email (required), work (required), personal, company, street, state, city, image, bd
 
-   localhost:8080/add?name=Tom%20Cruise&email=myemail@live.com&work=+1(555)555-5555&personal=6305555555&company=walmart&bd=11/27/1992&street=99+S+6th&state=IL&city=Chicago'
+   http://localhost:8080/add?name=Tom%20Cruise&email=myemail@live.com&work=+1(555)555-5555&personal=6305555555&company=walmart&bd=11/27/1992&street=99+S+6th&state=IL&city=Chicago'
 
    Spacing can be emulated by + or %20
 
@@ -49,9 +49,9 @@ The database is a simple SQL database that is not persistant for ease of Solstic
 
    Updating can only be done if a contact has been added and is based on email as it is the unique identifier
 
-   Arguments: email, work, personal, company, street, state, city, image, bd
+   Arguments: name (required), email (required), work (required), personal, company, street, state, city, image, bd
    
-   localhost:8080/update?name=Johnny%20Depp&email=myemail@live.com&work=+1(123)555-4567&personal=6306666666&company=Jewel
+   http://localhost:8080/update?name=Johnny%20Depp&email=myemail@live.com&work=+1(123)555-4567&personal=6306666666&company=Jewel
 
 
 ---
@@ -64,3 +64,5 @@ Do more checking for valid entries
 Make a cooler looking error page for browsers
 
 Allow for updating only some values and retaining old if value is empty within update method
+
+Add more unit tests
