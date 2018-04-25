@@ -43,6 +43,14 @@ public class ContactJdbcRepository {
         return jdbcTemplate.query("select * from contact", new StudentRowMapper());
     }
 
+    public List<Contact> findAllState(String state) {
+        return jdbcTemplate.query("select * from contact where state=?",new Object[] { state }, new StudentRowMapper());
+    }
+
+    public List<Contact> findAllCity(String city) {
+        return jdbcTemplate.query("select * from contact where city=?",new Object[] { city }, new StudentRowMapper());
+    }
+
     public Contact findById(long id) {
         return jdbcTemplate.queryForObject("select * from contact where id=?", new Object[] { id },
                 new BeanPropertyRowMapper<Contact>(Contact.class));
@@ -58,9 +66,12 @@ public class ContactJdbcRepository {
     }
 
     public Contact findByWorkNumber(String number) {
-        number = Validator.formatNumber(number);
-        return jdbcTemplate.queryForObject("select * from contact where number_work=?", new Object[] { number },
-                new StudentRowMapper());
+        try {
+            return jdbcTemplate.queryForObject("select * from contact where number_work=?", new Object[]{number},
+                    new StudentRowMapper());
+        }catch(Exception e){
+            return null;
+        }
     }
 
     public int deleteByEmail(String email) {
@@ -82,8 +93,27 @@ public class ContactJdbcRepository {
     }
 
     public int update(Contact contact) {
-        return jdbcTemplate.update("update contact " + " set name = ?, email = ? " + " where id = ?",
-                new Object[] { contact.getName(), contact.getEmail(), contact.getId() });
+        //TODO: Allow for updating only some values and retaining old if value is empty
+        return jdbcTemplate.update("update contact " + " set name = IsNull(?, name)," +
+                        " number_work = ?, " +
+                        " number_personal = ?, " +
+                        " company = ?, " +
+                        " street = ?, " +
+                        " state = ?, " +
+                        " city = ?, " +
+                        " image = ?, " +
+                        " bd = ? " +
+                        " where email = ?",
+                new Object[] { contact.getName(),
+                        contact.getWorkPhone(),
+                        contact.getPersonalPhone(),
+                        contact.getCompany(),
+                        contact.getStreet(),
+                        contact.getState(),
+                        contact.getCity(),
+                        contact.getProfileImage(),
+                        contact.getBd(),
+                        contact.getEmail() });
     }
 
 }

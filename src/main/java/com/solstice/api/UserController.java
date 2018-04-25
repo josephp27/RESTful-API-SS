@@ -35,6 +35,32 @@ public class UserController {
         return "saved\n";
     }
 
+    @GetMapping("/update")
+    @ResponseBody
+    public String updateRecord(@RequestParam(name="name") String user,
+                         @RequestParam(name="email") String email,
+                         @RequestParam(name="work") String number_work,
+                         @RequestParam(name="personal", required = false, defaultValue = "") String number_personal,
+                         @RequestParam(name="company", required = false, defaultValue = "") String company,
+                         @RequestParam(name="street", required = false, defaultValue = "") String street,
+                         @RequestParam(name="state", required = false, defaultValue = "") String state,
+                         @RequestParam(name="city", required = false, defaultValue = "") String city,
+                         @RequestParam(name="image", required = false, defaultValue = "") String image,
+                         @RequestParam(name="bd", required = false, defaultValue = "") String bd) {
+
+
+        Contact c = repository.findByEmail(email);
+        if(c == null)
+            throw new IllegalArgumentException("Cannot update a record that does not exist!");
+
+        //TODO: Allow for changing email. Currently does not allow
+        Contact newContact = new Contact(counter.incrementAndGet(), user, email, number_work, number_personal, company,
+                street, state, city, image, bd);
+
+        repository.update(newContact);
+        return "Record Updated!\n";
+    }
+
     @GetMapping(value="/get", params = {})
     @ResponseBody
     public List<Contact> getVal() {
@@ -44,8 +70,6 @@ public class UserController {
     @GetMapping(value = "/get", params = {"email"})
     @ResponseBody
     public Contact getVal(@RequestParam(name="email") String email) {
-        Validator.validateEmail(email);
-
         Contact c = repository.findByEmail(email);
         if(c != null)
             return c;
@@ -57,8 +81,29 @@ public class UserController {
     @GetMapping(value = "/get", params = {"work_number"})
     @ResponseBody
     public Contact getVal2(@RequestParam(name="work_number") String number) {
-        Validator.validateWork(number);
-        return repository.findByWorkNumber(number);
+        //return repository.findByWorkNumber(number);
+
+        Contact c = repository.findByWorkNumber(number);
+        if(c != null)
+            return c;
+        else{
+            throw new IllegalArgumentException("That numberl is not registered to anyone!");
+        }
+
+    }
+
+    @GetMapping(value = "/getall", params = {"state"})
+    @ResponseBody
+    public List<Contact> getAllState(@RequestParam(name="state") String state) {
+        //TODO: associate full name with state codes
+        return repository.findAllState(state.toUpperCase());
+
+    }
+
+    @GetMapping(value = "/getall", params = {"city"})
+    @ResponseBody
+    public List<Contact> getAllCity(@RequestParam(name="city") String city) {
+        return repository.findAllCity(city.toUpperCase());
 
     }
 
@@ -68,4 +113,6 @@ public class UserController {
         return repository.deleteByEmail(userEmail);
 
     }
+
+    //TODO: make a cooler looking error page for browsers
 }
